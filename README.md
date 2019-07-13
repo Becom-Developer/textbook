@@ -9,5 +9,5 @@ textbook - 役に立ちそうな記事のまとめ
 
 # INDEX
 
-- [docker_dev](docker_dev.md) - Docker を活用したwebアプリ開発環境について
-
+- __WEB__
+    - [docker_dev](docker_dev.md) - Docker を活用したwebアプリ開発環境について
