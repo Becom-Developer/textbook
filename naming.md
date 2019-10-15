@@ -50,7 +50,7 @@ my $before_name = 'nobita';
 # before とくれば after で完結
 my $after_name = join 'nobi_', $before_name;
 
-# nobi_nobita (変数名だけでなにをしたいのかがわかる)
+# 変数名だけでなにをしたいのかがわかる
 print $after_name;
 ```
 
@@ -64,7 +64,7 @@ my $address = 'hukuoka-hakata';
 my @address = ( 'hukuoka-hakata', 'hukuoka-higashi' );
 my %address = ( hukuoka_hakata => 'yoshizuka', hukuoka_higashi => 'tihaya');
 
-# 変数の中身が一つの場合は単数で、配列など複数の場合は複数形を書くように進められることがある
+# 変数の中身が一つの場合は単数で、配列など複数の場合は複数形を書くことをすすめられることがある
 # シジルがついていて配列であることは明白なのにわざわざ複数形をつける意味があるのか?
 my @addresses = ( 'hukuoka-hakata', 'hukuoka-higashi' );
 
@@ -134,17 +134,72 @@ sub join {
 # メソッド名はそのパッケージ(クラス)のなかで重複しなければよい
 my $name = $nobita->join('nobi');
 
-# メソッド名の命名についてはクラス名との兼ね合いも考えなければいけない
-
+# メソッド名の命名についてはクラス名との兼ね合いも考えなければいけないので単純なルール化が難しい
+# 実際に使われている言語の有名ライブラリの事例を参考にしておく
+# 例: Perl の場合はモジュール Mojolicious のメソッドの付け方を参考にしておく
 ```
 
 名前が長い場合はどう省略するのか
 
+```perl
+# たとえば sazae というアプリを初期化するメソッド名
+# 32文字! 読むのがつらい
+$self->initialization_application_sazae;
+
+# かつて母音で省略するやり方があった
+# 原型がなんなのかわけがわからない
+$self->intalzto_aco_sze;
+
+# 10文字以上のものはキリのいいところで初めから3~4文字にきっておく
+$self->init_app_sazae;
+```
+
 名前を複数形にするときに気をつける事
+
+```perl
+# 名前の場合
+my $names = ['nobita', 'suneo'];
+
+# 住所は最後が es になる
+my $addresses = ['hukuoka', 'saga'];
+
+# 無理に複数形にしなくても表現を変える方法もある
+my $address_list = ['hukuoka', 'saga'];
+
+# 行を row と表現するのはよくあるやり方
+my $name_rows = ['nobita', 'suneo'];
+```
 
 データベースのテーブル名について
 
+```perl
+# 受注というテーブルを order とした
+# banana という受注名のレコードを複数のオブジェクトで取得
+my @order_rows = $self->teng->search('order', { name => 'banana' });
+
+# 変数名を省略してもいいかもしれない
+my @order = $self->teng->search('order', { name => 'banana' });
+
+# 受注は複数あるのだからテーブル名は orders にするという考えがある
+my $orders_row = $self->teng->single('orders', { id => 4 });
+
+# 変数名を省略すると一つしかオブジェクトがないのに orders ?
+my $orders = $self->teng->single('orders', { id => 4 });
+
+# どういう風に複数形を表現するのがよいかよくわからない場合がある
+# 「注文の支払い履歴」 -> Order payment history
+# orders_payment.. ?  order_payments.. ? こういうことを考える時間になんの意味があるのだろうか
+# シンプルにそのままでつたわる
+my $order_payment_history = $self->teng->single('order_payment_history', { id => 4 });
+
+# データベースのレコードが複数存在するのはあたりまえの話なので複数形にするのはやめておくことにする
+```
+
 コーディングルールを決める時に気をつける事
+
+```
+
+```
 
 # SEE ALSO
 
