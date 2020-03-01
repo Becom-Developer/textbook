@@ -98,6 +98,38 @@ Windows 10 全般について
 
 ## CHAPTER2
 
+ミドルウェアの準備
+
+docker について
+
+```text
+昨今は開発環境の構築の手間を軽減するために docker を活用する場合がおおいため
+Windows 用の Docker Desktop for Windows をインストールする
+こちらが問題なくインストールできない場合は開発マシンとしてはいろいろと厳しい状況になっていくので
+docker のインストール作業がうまくいかない場合は別のマシンを検討するときの良い目安になる
+インストールは公式ページからおこない、別途 windows の場合の注意事項はネット上に様々な記事があるので
+それらを参考にしてインストールをおこなう
+```
+
+docker の基本的な使い方
+
+docker インストール完了後、 Power Shell で下記を試してみる
+
+```console
+(docker と docker-compose コマンドが使えること確認)
+> docker --version
+Docker version 19.03.5, build 633a0ea
+> docker-compose --version
+docker-compose version 1.25.4, build 8d51620a
+
+(コンテナに正常にアクセスできることを確認)
+> docker info
+Client:
+ Debug Mode: false
+...
+
+```
+
 ## CHAPTER3
 
 ## CHAPTER4
@@ -120,5 +152,7 @@ Windows 10 全般について
   - <https://www.google.com/intl/ja_jp/chrome/> - Google Chrome
   - <https://www.windows10info.net/index.html>
   - <https://pc-karuma.net/windows10/>
-- <https://docs.docker.com/docker-for-windows/install/>
-- <https://lab.sonicmoov.com/development/install-docker-windows/>
+- ミドルウェアの準備
+  - <https://www.docker.com/> - Docker 公式
+  - <https://docs.docker.com/docker-for-windows/install/> - docker ダウンロード
+  - <https://lab.sonicmoov.com/development/install-docker-windows/> - docker インストール参考記事
