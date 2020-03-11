@@ -87,6 +87,9 @@ vs code もワークスペースを作成するところからはじめる
 ```console
 (ワークスペースをしてして起動)
 $ code ~/etc/github.code-workspace
+
+(コマンドで textbook というフォルダをワークスペースに追加する場合)
+$ code ~/github/textbook
 ```
 
 ## SETTING
@@ -220,9 +223,9 @@ vscode の機能拡張については公式ページのマーケットプレイ�
   - Sublime Text Keymap and Settings Importer - サブライムテキストの使い勝手を再現
 - コード整形
   - markdownlint - 一貫性のあるマークダウンの書き方を強要する
-  - EditorConfig for VS Code
-  - ESLint
-  - Prettier
+  - EditorConfig for VS Code - テキストエディタ共通の設定
+  - ESLint - おもにjsのシンタックスエラーをチェック
+  - Prettier - おもにjsのコード整形
 - perl
   - Mojolicious - Mojolicious の書き方のシンタックス表示
   - perltidy - Perl コードを整形
@@ -283,7 +286,9 @@ vscode は最初からソースコードを整形するしくみが入ってい�
 ソースコードの整形には prettier を使うというのが流れとなっている vscode での具体的な使い方をまとめておく
 ```
 
-ESLint
+### ESLint
+
+シンタックスエラーを確認
 
 ```text
 vscode の ESLint プラグインは npm 配布ライブラリの ESLint に依存しているので
@@ -409,32 +414,85 @@ js というのは本来の(昔の)書き方、ES2015 以降の書き方、React
 
 こちらをくわえると保存のタイミングでコードの整形もおこなってくれる
 
----
+### prettier
 
-prettier
+ソースコードを整形
 
 ```text
-
+prettier については vscode のプラグイン単体でもうごかすことができるが、
+大抵は npm 経由で prettier のライブラリもインストールする
+prettier のライブラリを使うことで違うテキストエディタの環境でもコードの整形を共有できる
 ```
 
 1. vs code プラグイン prettier をインストールする
 1. vs code での設定
+1. npm より prettier ライブラリをインストールする
+1. 使えるようになるための設定
 
+vs code プラグイン prettier をインストールする
 
+```console
+(prettier の名前で複数あるので注意)
+$ code --install-extension esbenp.prettier-vscode
 
-
-prettier で検索すると同じ名前のものが複数あらわれるが、今回はこちらを選択
+(インストールできたことを確認)
+$ code --list-extensions
+...
 esbenp.prettier-vscode
-https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+...
 
-prettier.prettier-vscode
+(プラグインをいれたときはアプリを再起動しなくてはいけないことに注意)
+```
 
+vs code での設定
 
+`setting.json` を下記のように変更
 
+```js
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
+```
 
-- プラグインの使い方詳細
-- <https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint>
-- <https://www.npmjs.com/package/eslint>
+`hello.js` (問題ない書き方に変更する)
+
+```js
+// 文字の囲みをシングルクォートにする
+console.log('hello----!');
+```
+
+- vscode 側
+  - 表示 -> 機能拡張 -> 有効から prettier が有効になっていることを確認
+  - `hello.js` をひらいて `alt+shift+f` をおして整形を実行する
+  - シングルクォートがダブルクォートに変更される
+
+npm より prettier ライブラリをインストールする
+
+```console
+(開発用にインストール)
+$ npm install prettier --save-dev
+
+(このように実行するとファイルが整形されたものに上書き)
+$ ./node_modules/.bin/prettier --write hello.js
+```
+
+使えるようになるための設定
+
+```console
+(シングルクォートはそのままで使いたいので設定ファイルを設置)
+$ touch .prettierrc
+```
+
+`.prettierrc`
+
+```js
+{
+    "singleQuote": true
+}
+```
 
 ## SEEALSO
 
