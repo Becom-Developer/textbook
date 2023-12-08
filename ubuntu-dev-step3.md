@@ -15,8 +15,8 @@ sudo apt install ./google-chrome-stable_current_amd64.deb
 
 google chorme
 
-公式ページからインストール
-<https://www.google.co.jp/intl/ja/chrome/>
+- 公式ページからインストール
+  - <https://www.google.co.jp/intl/ja/chrome/>
 
 起動して既存の web ブラウザに設定、必要なら自身のアカウントでログインしておく
 
@@ -24,14 +24,15 @@ google chorme
 
 vscode
 
-公式ページからインストール
-<https://azure.microsoft.com/ja-jp/products/visual-studio-code/>
+- 公式ページからインストール
+  - <https://azure.microsoft.com/ja-jp/products/visual-studio-code/>
 
 ### 初期設定
 
 #### プラグイン
 
 日本語表示にするプラグインを導入
+
 Japanese Language Pack for Visual Studio Code
 
 - 手順
@@ -54,21 +55,21 @@ echo '# draft' > ~/tmp/draft.md
   - ファイル -> フォルダをワークスペースに追加 -> `tmp`フォルダを選択
 - ワークスペースの名前をつける
   - ファイル -> 名前をつけてワークスペースを保存 ->
-  - 今回は ~/etc ディレクトリに addspace.code-workspace という名前で保存
+  - 今回は ~/etc ディレクトリに my.code-workspace という名前で保存
 - ワークスペースを終了
   - ファイル -> ワークスペースを閉じる
 - 閉じたワークスペースを始める
-  - ファイル -> ファイルでワークスペースを開く -> `addspace.code-workspace` を開く
+  - ファイル -> ファイルでワークスペースを開く -> `my.code-workspace` を開く
 - さらに設定ファイルのディレクトリをワークスペースに追加
   - ファイル -> フォルダをワークスペースに追加 -> `etc`フォルダを選択
 
-次回から vscode を起動するときはコマンドラインで `code ~/etc/addspace.code-workspace` を実行するとワークスペースが立ち上がる
+次回から vscode を起動するときはコマンドラインで `code ~/etc/my.code-workspace` を実行するとワークスペースが立ち上がる
 
 #### 設定ファイル
 
 vscode の設定ファイルをつくる
 
-- etc -> addspace.code-workspace をクリックして開く
+- etc -> my.code-workspace をクリックして開く
 - 下記のような設定値をくわえて保存する。
 
 ```json
@@ -103,19 +104,12 @@ vscode の設定ファイルをつくる
 
 GitHub Desktop
 
-公式ページからインストール
-<https://github.com/shiftkey/desktop/releases>
-
-MySQL Workbench
-
-公式ページからインストール
-Ubuntu Linux -> Ubuntu Linux 22.04(x86, 64-bit) -> 上の方の 30.4M をダウンロード
-「No thanks, just start my download.」をクリックすると登録せずにダウンロードできる。
-<https://dev.mysql.com/downloads/workbench/>
+- 公式ページからインストール
+  - <https://github.com/shiftkey/desktop/releases>
 
 ## コミュニケーションツール
 
 slack
 
-公式ページからインストール
-<https://slack.com/intl/ja-jp/downloads/linux>
+- 公式ページからインストール
+  - <https://slack.com/intl/ja-jp/downloads/linux>
