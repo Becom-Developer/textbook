@@ -53,7 +53,7 @@ pull requests 作成後は手元のソースコードを更新するたびにこ
 
 ```console
 git add .
-git commitn -m 'MEMO'
+git commit -m 'MEMO'
 git push origin dev#1
 ```
 
@@ -86,11 +86,51 @@ git push origin dev#1
 公開
 
 - github の pull requests の画面上で `Merge pull request` ボタンを使い main ブランチと統合
-- main ブランチに取り込んだ後はブランチを削除しておく
-- 手元のローカルブランチを削除するのは下記のコマンド
+- 最新の main ブランチを更新して、不要になった手元のローカルブランチを削除
+
+main ブランチに切り替え
+
+```console
+git checkout main
+```
+
+リモートブランチの情報を反映
+
+```console
+git fetch
+```
+
+最新のリモート main ブランチを取り込み
+
+```console
+git pull
+```
+
+不要になったローカルの開発ブランチ削除
 
 ```console
 git branch -d dev#1
 ```
 
 最近は github の main ブランチを更新すると自動的に公開環境へデプロイするツールなどもあるので必要に応じて活用
+
+## Cheat Sheet
+
+よくつかうコマンド
+
+- `git version`: Gitのバージョンを出力する
+- `git clone {リポジトリのURL}`: 対象リポジトリのデフォルトブランチをクローンする
+- `git branch`: ローカルブランチの一覧を出力する（チェックアウト中のブランチに * が付く）
+- `git branch -a`: ローカルブランチとリモートブランチの一覧を出力する
+- `git branch -d {ブランチ名}`: 対象ブランチを削除する
+- `git checkout {ブランチ名}`: 対象ブランチに切り替える
+- `git checkout -b {ブランチ名}:` 対象ブランチを新規作成し、切り替える
+- `git checkout {ファイルパス}` ワークツリーにある対象ファイルの変更を取り消す
+- `git checkout .`; ワークツリーにある全ファイルの変更を取り消す
+- `git status`: 変更したファイルの一覧を出力する
+- `git add -A`: 変更した全ファイルをインデックスに追加する
+- `git add .`: 上記同じ
+- `git commit -m "{メッセージ}"`: メッセージを付け、インデックスにある全ファイルをコミットする
+- `git push origin {ローカルブランチ名}`: 対象ローカルブランチを origin にプッシュする
+- `git fetch origin`: origin から最新の履歴を取得する
+- `git fetch`: 上記の省略形
