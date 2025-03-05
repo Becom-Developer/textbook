@@ -1,5 +1,7 @@
 # GUI アプリケーションの準備
 
+2025-03-05 更新
+
 インストールの流れはすべてダウンロードページからパッケージをダウンロードしてきて、`sudo apt install` コマンドでインストール、ファイルの拡張子が `.deb` のものを使うこと。
 
 例: google chorme の場合
@@ -113,3 +115,10 @@ slack
 
 - 公式ページからインストール
   - <https://slack.com/intl/ja-jp/downloads/linux>
+
+## データ保存
+
+Dropbox
+
+- 公式ページからインストール
+  - <https://www.dropbox.com/ja/install-linux>
